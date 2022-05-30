@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./App.module.css";
-import { Cards, Chart, CountryPicker } from "./components";
-
+import { Header, Cards, Chart, CountryPicker, Footer } from "./components";
 import { fetchData } from "./api";
 
 class App extends React.Component {
@@ -9,22 +8,28 @@ class App extends React.Component {
     super(props);
     this.state = {
       cardsData: {},
+      country: "",
     };
   }
 
   async componentDidMount() {
     const fetchedData = await fetchData();
-    this.setState({ cardsData: fetchedData }, () => {
-      console.log(this.state);
-    });
+    this.setState({ cardsData: fetchedData });
   }
+
+  handleCountryChange = async (country) => {
+    const fetchedData = await fetchData(country);
+    this.setState({ cardsData: fetchedData, country: country });
+  };
 
   render() {
     return (
       <div className={styles.container}>
+        <Header className={styles.header_image} />
         <Cards cardsData={this.state.cardsData} />
-        <CountryPicker />
-        <Chart />
+        <CountryPicker handleCountryChange={this.handleCountryChange} />
+        <Chart data={this.state.cardsData} country={this.state.country} />
+        <Footer />
       </div>
     );
   }

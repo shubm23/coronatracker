@@ -1,13 +1,12 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./Cards.module.css";
 import { default as CardComponent } from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
-import { Card } from "./Card";
+import Card from "./Card";
 import cx from "classnames";
 
-export default function Cards({
-  cardsData: { confirmed, recovered, deaths, lastUpdate },
-}) {
+function Cards({ cardsData: { confirmed, recovered, deaths, lastUpdate } }) {
+  console.log(confirmed, recovered, deaths);
   if (!confirmed || !recovered || !deaths || !lastUpdate) {
     return <h1>Loading ......</h1>;
   }
@@ -19,6 +18,7 @@ export default function Cards({
           title="Infected"
           count={confirmed.value}
           date={lastUpdate}
+          body="Number of Active Cases of Covid"
           className={cx(styles.card, styles.infected)}
         />
         <Card
@@ -26,6 +26,7 @@ export default function Cards({
           title="Recovered"
           count={recovered.value}
           date={lastUpdate}
+          body="Number of recoveries from Covid"
           className={cx(styles.card, styles.recovered)}
         />
         <Card
@@ -33,9 +34,12 @@ export default function Cards({
           title="Deaths"
           count={deaths.value}
           date={lastUpdate}
+          body="Number of deaths caused by Covid"
           className={cx(styles.card, styles.deaths)}
         />
       </Grid>
     </div>
   );
 }
+
+export default memo(Cards);

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import CountUp from "react-countup";
 
-export const Card = ({ CardComponent, title, count, date, className }) => {
+const Card = ({ CardComponent, title, count, date, body, className }) => {
   console.log(className);
   return (
     <Grid item xs={12} md={3} component={CardComponent} className={className}>
@@ -18,10 +18,10 @@ export const Card = ({ CardComponent, title, count, date, className }) => {
         <Typography color="textSecondary">
           {new Date(date).toDateString()}
         </Typography>
-        <Typography variant="body2">
-          Number of Active Cases of Covid - 19
-        </Typography>
+        <Typography variant="body2">{body}</Typography>
       </CardContent>
     </Grid>
   );
 };
+
+export default memo(Card);
