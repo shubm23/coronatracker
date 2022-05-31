@@ -5,7 +5,7 @@ function Header({ className }) {
   return (
     <>
       {" "}
-      <img src={coronaImage} className={className} alt="Corona Header" />
+      <img src={coronaImage} className={className} alt="Corona Header Image" />
     </>
   );
 }
