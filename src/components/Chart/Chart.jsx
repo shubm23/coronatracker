@@ -5,13 +5,11 @@ import styles from "./Chart.module.css";
 
 function Chart({ data: { confirmed, recovered, deaths }, country }) {
   const [dailyData, setDailyData] = useState([]);
-  console.log(country);
 
   useEffect(() => {
     fetchDailyData()
       .then((data) => {
         setDailyData(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error(error);

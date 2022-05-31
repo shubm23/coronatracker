@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import CountUp from "react-countup";
 
 const Card = ({ CardComponent, title, count, date, body, className }) => {
-  console.log(className);
   return (
     <Grid item xs={12} md={3} component={CardComponent} className={className}>
       <CardContent>

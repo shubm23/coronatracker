@@ -26,8 +26,6 @@ export const fetchData = async (country = "Global") => {
 export const fetchDailyData = async () => {
   try {
     const { data } = await axios.get(`${url}/daily`);
-    console.log(data);
-
     const modifiedData = data.map((daily) => ({
       confirmed: daily.confirmed.total,
       deaths: daily.deaths.total,
@@ -46,6 +44,6 @@ export const fetchCountries = async () => {
     } = await axios.get(`${url}/countries`);
     return countries.map((el) => el.name);
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };

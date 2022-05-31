@@ -6,7 +6,6 @@ import Card from "./Card";
 import cx from "classnames";
 
 function Cards({ cardsData: { confirmed, recovered, deaths, lastUpdate } }) {
-  console.log(confirmed, recovered, deaths);
   if (!confirmed || !recovered || !deaths || !lastUpdate) {
     return <h1>Loading ......</h1>;
   }

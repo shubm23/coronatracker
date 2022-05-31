@@ -12,7 +12,7 @@ function CountryPicker({ handleCountryChange }) {
         setfetchedCountries(data);
       })
       .catch((err) => {
-        console.log(err);
+        throw err;
       });
   }, []);
 

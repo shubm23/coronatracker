@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import coronaImage from "../../image/image.png";
 
 function Header({ className }) {
-  console.log("Rendering the Header");
   return (
     <>
       {" "}

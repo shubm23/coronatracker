@@ -3,7 +3,6 @@ import { Toolbar, Typography } from "@mui/material";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
-  console.log("Rendering the Footer");
   return (
     <div className={styles.container}>
       <Toolbar style={{ justifyContent: "center" }}>
